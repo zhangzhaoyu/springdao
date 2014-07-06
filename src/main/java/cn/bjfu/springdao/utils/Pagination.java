@@ -13,7 +13,6 @@ import java.util.List;
  * @see       
  */
 public class Pagination<T> {
-
 	/**
 	 * 第一条记录的位置
 	 */
