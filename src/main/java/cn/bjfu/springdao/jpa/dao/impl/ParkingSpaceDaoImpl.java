@@ -12,7 +12,6 @@ package cn.bjfu.springdao.jpa.dao.impl;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cn.bjfu.springdao.jpa.dao.IParkingSpaceDao;
