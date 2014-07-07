@@ -52,6 +52,7 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 		emp.setSalary(salary);
 		emp.setPhoneNum(phoneNum);
 		em.persist(emp);
+		em.flush();
 		return emp;
 	}
 	
