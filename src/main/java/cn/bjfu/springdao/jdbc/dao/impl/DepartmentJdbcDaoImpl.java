@@ -24,8 +24,9 @@ import cn.bjfu.springdao.jpa.domain.execise.Department;
 
 /** 
  * ClassName:DepartmentJdbcDaoImpl <br/> 
- * Function: TODO ADD FUNCTION. <br/> 
- * Reason:   TODO ADD REASON. <br/> 
+ * Function: hibernate JPA 与JDBC 混合使用时, 要注意缓存问题, hibernate 的提交时事务技术时
+ * 			在操作的时候，要全局分析，避免JDBC的更新操作被覆盖. <br/> 
+ * Reason:   最佳方案是，hibernate JPA 用来读写，JDBC只用来读. <br/> 
  * Date:     2014年7月7日 上午9:29:26 <br/> 
  * @author   zhangzhaoyu 
  * @version   
