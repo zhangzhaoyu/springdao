@@ -73,7 +73,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> queryAll() {
-		String hql = "select * from " + entityClass.getSimpleName();
+		String hql = "select d from " + entityClass.getSimpleName() +" d";
 		Query query = this.em.createQuery(hql);
 		return query.getResultList();
 	}
@@ -180,7 +180,7 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 	}
 	
 	private String convertSqlFromMap(Map<String, Object> map) {
-		String sql = "select * from " + this.entityClass.getSimpleName() + " where 1 = 1 ";
+		String sql = "select p from " + this.entityClass.getSimpleName() + " p where 1 = 1 ";
 		StringBuilder builder = new StringBuilder(sql);
 		Set<String> set = map.keySet();
 		
