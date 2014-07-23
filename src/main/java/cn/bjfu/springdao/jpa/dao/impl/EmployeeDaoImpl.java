@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 	// PersistenceContext 为事务范围的实体管理器，是无状态的，容器为我们管理它
 	// 所有容器托管的实体管理器均依赖于JTA 事务。他们可以使用事务作为跟踪持久化
 	// 上下文的方式
-	@PersistenceContext
+	@PersistenceContext(type = PersistenceContextType.TRANSACTION)
 	private EntityManager em;
 	
 	public void setEntityManager(EntityManager em) {
