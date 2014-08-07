@@ -6,7 +6,8 @@
  * Copyright (c) 2014, zhangzhaoyu0524@163.com All Rights Reserved. 
  * 
 */  
-  
+
+ 
 package cn.bjfu.springdao.jpa.frame;  
 
 import java.util.Map;
