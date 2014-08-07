@@ -33,6 +33,8 @@ public interface IEmployeeDao {
 	public Employee findEmployee(int id);
 	public void removeEmployee(int id);
 	public List<Employee> findAllEmployees();
+	public long queryEmpSalary(String deptName, String empName);
+	public List<Object[]> displayProjectEmployees(String projectName);
 	public void setEntityManager(EntityManager em);
 	
 }

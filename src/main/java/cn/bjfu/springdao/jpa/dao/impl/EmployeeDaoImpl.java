@@ -14,12 +14,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.jpa.EntityManagerFactoryUtils;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import cn.bjfu.springdao.jpa.dao.IEmployeeDao;
 import cn.bjfu.springdao.jpa.domain.execise.Employee;
@@ -91,6 +89,27 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 	public void saveEmployee(Employee emp) {
 		this.em.persist(emp);
 		System.out.println("persist....");
+	}
+
+	@Override
+	public long queryEmpSalary(String deptName, String empName) {
+		final String qlString = "SELECT e.salary FROM Employee e WHERE e.department.name = :deptName "
+				+ " AND e.name = :empName";
+		TypedQuery<Long> query = em.createQuery(qlString, Long.class)
+				.setParameter("deptName", deptName)
+				.setParameter("empName", empName);
+		return query.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> displayProjectEmployees(String projectName) {
+
+		final String jpql = "SELECT e.name, e.depart.name FROM Project p JOIN p.employees e WHERE "
+				+ " p.name = ?1 ORDER BY e.name ";
+		Query query = this.em.createQuery(jpql);
+		query.setParameter(1, projectName);
+		return query.getResultList();
 	}
 	
 }
